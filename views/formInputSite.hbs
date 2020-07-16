@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap-4.0.0/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/site/all">
+                  <span data-feather="octagon">(current)</span>
+                  Sites
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/beams">
+                  <span data-feather="target">(current)</span>
+                  Beams
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/partner">
+                  <span data-feather="users"></span>
+                  Partners
+                </a>
+              </li>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>                                          
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+              <h2>Insert New Site</h2>      
+            </div>
+             <div>
+                <form action="/site/insert" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="siteName" placeholder="Site Name" name="siteName">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="linkId" placeholder="Link ID" name="linkId">
+                </div>
+                <div class="form-group">
+                    <label for="beam">Beam</label>
+                    <select class="form-control form-control" id="beam" name="beam">
+                        {{#each formInformation.beams}}
+                        <option>{{beam_id}}</option>
+                        {{/each}}
+                    </select>                    
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select class="form-control form-control" id="service" name="service">
+                        {{#each formInformation.services}}
+                        <option value={{service_id}}>{{service_name}}</option>
+                        {{/each}}
+                    </select>                    
+                </div>
+                <div class="form-group">
+                    <label for="svno">SVNO</label>
+                    <select class="form-control form-control" id="svno" name="svno">
+                        {{#each formInformation.svno}}
+                        <option value={{svno_id}}>{{svno}}</option>
+                        {{/each}}
+                    </select>                    
+                </div>                                                
+                <div class="form-group">    
+                    <label for="modem">Modem</label>
+                    <select class="form-control form-control" id="modem" name="modem">
+                        {{#each formInformation.modem}}
+                        <option value={{modem_id}}>{{modem}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="serialNumber" placeholder="Enter Serial Number" name="serialNumber">
+                </div>                                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="macAir" placeholder="Enter Mac Air" name="macAir">
+                </div>                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="latitude" placeholder="Enter Latitude" name="latitude">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="longitude" placeholder="Enter Longitude" name="longitude">
+                </div>
+               </div>                               
+                <div class="form-group">
+                    <select class="form-control form-control" id="status" name="status">
+                        {{#each formInformation.status}}
+                        <option value={{status_id}}>{{status}}</option>
+                        {{/each}}
+                    </select>
+                </div>     
+                <div class="form-group">
+                    <label for="startOnlie">Start Online</label>
+                    <input type="date" class="form-control" id="startOnline" placeholder="Enter Start Online" name="startOnline">
+                </div>
+                <div class="form-group">
+                    <label for="projectId">Project ID</label>
+                    <select class="form-control form-control" id="projectId" name="projectId">
+                        {{#each formInformation.project}}
+                        <option value={{project_id}}>{{project_id}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="vendorr">Partner</label>
+                    <select class="form-control form-control" id="Partner" name="partner">
+                        {{#each formInformation.partner}}
+                        <option value={{partner_id}}>{{partner}}</option>
+                        {{/each}}
+                    </select>
+                </div>                                                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="terminalName" placeholder="Enter Terminal Name" name="terminalName">
+                </div>                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="linkPortal" placeholder="Enter Link Portal" name="linkToPortal">
+                </div>                 
+                <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>')</script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    
+  </body>
+</html>

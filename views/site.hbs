@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap-4.0.0/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="/">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/site/all">
+                  <span data-feather="octagon"></span>
+                  Sites
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/beams">
+                  <span data-feather="target">(current)</span>
+                  Beams
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/partner">
+                  <span data-feather="users">(current)</span>
+                  Partners
+                </a>
+              </li>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>                                          
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Site Information</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                <button class="btn btn-sm btn-outline-secondary">Export</button>
+              </div>
+              <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                This week
+              </button>
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                  <h5>Site Name</h5>
+                  <h2>{{siteInformation.site_name}}</h2>
+              </div>
+              <div class="col-sm-6">
+                  <h5>Beam</h5>
+                  <h2>{{siteInformation.beam_id}}</h2>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <div class="col-sm-6">
+                  <h5>Link ID</h5>
+                  <h2>{{siteInformation.link_id}}</h2>
+                  </div>
+              <div class="col-sm-6">
+                 <h5>Project ID</h5>
+                  <h2>{{siteInformation.pid}}</h2>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <div class="col-sm-6">
+                  <h5>Mac Air</h5>
+                  <h2>{{siteInformation.mac_air}}</h2>
+                  </div>
+              <div class="col-sm-6">
+                 <h5>Service</h5>
+                  <h2>{{siteInformation.service_id}}</h2>
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+              <div class="col-sm-6">
+                  <h2>
+                      <a href="{{siteInformation.link_portal}}">Link To Portal</a>
+                 </h2>
+                  </div>
+            </div>
+           <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editModal">Edit</button>
+           <!-- Modal -->
+          <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editModal">Edit Site Information</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                <form action="/site/edit/{{siteInformation.link_id}}" method="POST">
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="siteName" placeholder="Site Name" name="siteName" value={{siteInformation.site_name}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="linkId" placeholder="Link ID" name="linkId" value={{siteInformation.link_id}}>
+                </div>
+
+                <div class="form-group">
+                    <label for="beam">Beam</label>
+                    <select class="form-control form-control is-valid" id="beam" name="beam">
+                        {{#each formInformation.beams}}
+                        <option>{{beam_id}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select class="form-control form-control is-valid" id="service" name="service">
+                        {{#each formInformation.services}}
+                        <option value={{service_id}}>{{service_name}}</option>
+                        {{/each}}
+                    </select>                    
+                </div>
+
+                <div class="form-group">
+                    <label for="svno">SVNO</label>
+                    <select class="form-control form-control is-valid" id="svno" name="svno">
+                        {{#each formInformation.svno}}
+                        <option value={{svno_id}}>{{svno}}</option>
+                        {{/each}}
+                    </select>                    
+                </div>    
+
+                <div class="form-group">    
+                    <label for="modem">Modem</label>
+                    <select class="form-control form-control is-valid" id="modem" name="modem">
+                        {{#each formInformation.modem}}
+                        <option value={{modem_id}}>{{modem}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="serialNumber" placeholder="Enter Serial Number" name="serialNumber" value={{siteInformation.serial_number}}>
+                </div>                                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="macAir" placeholder="Enter Mac Air" name="macAir" value={{siteInformation.mac_air}}>
+                </div>                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="latitude" placeholder="Enter Latitude" name="latitude" value={{siteInformation.latitude}}>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="longitude" placeholder="Enter Longitude" name="longitude" value={{siteInformation.longitude}}>
+                </div>
+                                              
+                <div class="form-group">
+                    <select class="form-control form-control is-valid" id="status" name="status" >
+                        {{#each formInformation.status}}
+                        <option value={{status_id}}>{{status}}</option>
+                        {{/each}}
+                    </select>
+                </div>     
+                <div class="form-group">
+                    <label for="startOnlie">Start Online</label>
+                    <input type="date" class="form-control is-valid" id="startOnline" placeholder="Enter Start Online" name="startOnline" value={{siteInformation.start_online}}>
+                </div>
+                <div class="form-group">
+                    <label for="projectId">Project ID</label>
+                    <select class="form-control form-control is-valid" id="projectId" name="projectId">
+                        {{#each formInformation.project}}
+                        <option value={{project_id}}>{{project_id}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="vendorr">Partner</label>
+                    <select class="form-control form-control is-valid" id="Partner" name="partner">
+                        {{#each formInformation.partner}}
+                        <option value={{partner_id}}>{{partner}}</option>
+                        {{/each}}
+                    </select>
+                </div>                                                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="terminalName" placeholder="Enter Terminal Name" name="terminalName" value={{siteInformation.terminal_name}}>
+                </div>                
+                <div class="form-group">
+                    <input type="text" class="form-control" id="linkPortal" placeholder="Enter Link Portal" name="linkToPortal" value={{siteInformation.link_portal}}>
+                </div>                 
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          </div>
+        
+           <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteDialog">delete this site</button>
+            <!-- Detele Modal Dialog -->
+            <div class="modal fade" id="modalDeleteDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="/site/delete/{{siteInformation.link_id}}" type="button" class="btn btn-danger">Yes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>')</script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    
+  </body>
+</html>
