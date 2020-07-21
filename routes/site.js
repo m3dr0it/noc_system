@@ -42,7 +42,7 @@ router.get('/delete/:linkId',function(req,res,next){
 
 router.get('/insert',function(req,res,next){
 
-  connection.query("select * from beam",function(err,beams){
+  connection.query("select * from beams",function(err,beams){
     connection.query("select * from services",function(err,services){
       connection.query("select * from svno",function(err,svno){
         connection.query("select * from modem",function(err,modem){
@@ -108,7 +108,7 @@ router.get('/:linkID',function(req,res,next){
     var linkID = req.params.linkID;
     console.log(linkID);
     connection.query("select * from sites where `link_id`='"+linkID+"' ",function(err,rows){
-      connection.query("select * from beam",function(err,beams){
+      connection.query("select * from beams",function(err,beams){
         connection.query("select * from services",function(err,services){
           connection.query("select * from svno",function(err,svno){
             connection.query("select * from modem",function(err,modem){

@@ -15,7 +15,6 @@
     <!-- Custom styles for this template -->
     <link href="/stylesheets/dashboard.css" rel="stylesheet">
   </head>
-
   <body>
 
     <div class="container-fluid">
@@ -30,24 +29,25 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="/site/all">
-                  <span data-feather="octagon">(current)</span>
+                <a class="nav-link" href="/site/all">
+                  <span data-feather="octagon"></span>
                   Sites
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/beam">
-                  <span data-feather="target">(current)</span>
+                  <span data-feather="target"></span>
                   Beams
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/partner">
-                  <span data-feather="users">(current)</span>
+                <a class="nav-link active" href="/partner">
+                  <span data-feather="users"></span>
                   Partners
                 </a>
               </li>
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+            <h6 class="sidebar-heading d-flex justify-content-be
+            tween align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
                 <span data-feather="plus-circle"></span>
@@ -58,61 +58,42 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Site Information</h1>
+            <h1 class="h2">Partners Information</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
                 <button class="btn btn-sm btn-outline-secondary">Export</button>
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
+                <span data-feather="calendar">Test</span>
                 This week
               </button>
             </div>
           </div>
-                <table class="table" id="tableSites">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col">Link ID</th>
-                          <th scope="col">Name</th>
-                          <th scope="col">Beam</th>
-                          <th scope="col">Service</th>
-                          <th scope="col">Modem</th>
-                          <th scope="col">Mac Air</th>
-                          <th scope="col">Lat Long</th>
-                          <th scope="col">Status</th>
-                          <th scope="col">Link Portal</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          {{#each allSiteInformation}}
-                          <tr>
-                              <td>
-                                  {{link_id}}
-                              </td>
-                              <td>
-                                 <a href="/site/{{link_id}}">
-                                  {{site_name}}
-                                  </a>
-                              </td>
-                              <td>{{beam_id}}</td>
-                              <td>{{service}}</td>
-                              <td>{{modem_type}}</td>
-                              <td>{{mac_air}}</td>
-                              <td>{{longitude}} , {{latitude}}</td>
-                              <td>{{status}}</td>
-                              <td>
-                                  <a href="{{link_portal}}">
-                                      Link to Portal
-                                  </a>
-                              </td>
-                              <td></td>
-                          </tr>
-                          {{/each}}
-                      </tbody>
-                </table>
-              <a href="/site/insert" class="btn btn-sm btn-success">Add Site</a>
-         </div>
+          <table class="table" id="tableSites">
+               <thead class="thead-dark">
+                 <tr>
+                 <th scope="col">Partner ID</th>
+                 <th scope="col">Name</th>
+                 <th scope="col">Project ID</th>
+                 </th>
+               </tr>
+            </thead>
+            <tbody>
+              {{#each partnerInformation}}
+              <tr>
+                <td>
+                  <a href="/partner/{{partner_id}}">
+                    {{partner_id}}
+                  </a>
+                  </td>
+                <td>{{partner}}</td>
+                <td>{{project_id}}</td>
+              </tr>
+              {{/each}}
+            </tbody>   
+            </table>
+            <a href="/partner/insert" class="btn btn-sm btn-success">Add Partner</a>
         </main>
       </div>
     </div>
@@ -121,7 +102,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>') </script>
+    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>')</script>
     <script src="/bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
     <script src="/bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
 
