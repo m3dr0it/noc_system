@@ -20,7 +20,7 @@ router.get('/',function(req, res, next) {
       connection.query("select count(link_id) as onlineSitesCount from sites  where `status_id`='2'",function(err,onlineSitesCount){
         connection.query("select count(link_id) as notActivatedSitesCount from sites where `status_id`='4'",function(err,notActivatedSitesCount){
           connection.query("select count(beam_id) as beamsCount from beams",function(err,beamsCount){
-            connection.query("select count(partner) as partnersCount from partner",function(err,partnersCount){
+            connection.query("select count(partner) as partnersCount from partners",function(err,partnersCount){
 
               allSitesStatus.partnersCount = partnersCount[0].partnersCount;
               allSitesStatus.offlineSitesCount = offlineSitesCount[0].offlineSitesCount;

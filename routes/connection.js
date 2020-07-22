@@ -10,11 +10,11 @@ var mysql = require('mysql');
 var connectionDb = mysql.createConnection({
   host:'localhost',
   port:'3306',
-  user:'noc_alpha',
-  password:'hellonoc',
+  user:'root',
+  password:'',
   database:'noc_system'
 });
-// connectionDb.connect(function(err){
-//   console.log(err);
-// })
+connectionDb.connect(function(err){
+  console.log(err);
+})
 module.exports = connectionDb;

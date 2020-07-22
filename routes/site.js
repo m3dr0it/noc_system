@@ -46,8 +46,8 @@ router.get('/insert',function(req,res,next){
     connection.query("select * from services",function(err,services){
       connection.query("select * from svno",function(err,svno){
         connection.query("select * from modem",function(err,modem){
-          connection.query("select * from project",function(err,project){
-            connection.query("select * from partner",function(err,partner){
+          connection.query("select * from projects",function(err,project){
+            connection.query("select * from partnesr",function(err,partner){
               connection.query("select * from status",function(err,status){
                 
                 formInformation.beams = beams
@@ -112,8 +112,8 @@ router.get('/:linkID',function(req,res,next){
         connection.query("select * from services",function(err,services){
           connection.query("select * from svno",function(err,svno){
             connection.query("select * from modem",function(err,modem){
-              connection.query("select * from project",function(err,project){
-                connection.query("select * from partner",function(err,partner){
+              connection.query("select * from projects",function(err,project){
+                connection.query("select * from partners",function(err,partner){
                   connection.query("select * from status",function(err,status){
                     
                     formInformation.beams = beams
