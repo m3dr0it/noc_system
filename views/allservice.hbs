@@ -36,7 +36,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="/beam">
+                <a class="nav-link" href="/beam">
                   <span data-feather="target"></span>
                   Beams
                 </a>
@@ -48,7 +48,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/service">
+                <a class="nav-link active" href="/service">
                   <span data-feather="package"></span>
                   Services
                 </a>
@@ -76,7 +76,7 @@
                   <span data-feather="briefcase"></span>
                   Project
                 </a>
-              </li>                           
+              </li>                                                                 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -88,79 +88,39 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Beam Information</h1>
+            <h1 class="h2">Service Profile Information</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
                 <button class="btn btn-sm btn-outline-secondary">Export</button>
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar">Test</span>
+                <span data-feather="calendar"></span>
                 This week
               </button>
             </div>
           </div>
-
-            <div class="row">
-              <div class="col">
-                <div class="card text-white bg-primary mb-3">
-                  <div class="card-body">
-                    <h3 class="card-title">Beam {{beamInformation.beam_id}}</h3>
-                    <h5 class="card-text">Covered Area : </h5>
-                    <h6>
-                        {{beamInformation.covered_area}}
-                    </h6>
-                  </div>
-                </div>
-              </div>
-              </div>
-         <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#editModal">Edit</button>
-           <!-- Modal -->
-          <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="editModal">Edit Beam Information</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                  <div class="modal-body">
-                    <form action="/beam/edit/{{beamInformation.beam_id}}" method="post">
-                    <div class="form-group">
-                        <input type="number" class="form-control" id="beamNumber" placeholder="Beam Number" name="beamNumber" >
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="coveredArea" placeholder="Covered Area" name="coveredArea" name="Covered Area">
-                    </div>
-                    <div class="modal-footer">
-                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                       <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                    </form>
-                </div>
-              </div>
-             </div>
-            </div>
-          
-          <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modalDeleteDialog">delete this beam</button>
-            <!-- Detele Modal Dialog -->
-            <div class="modal fade" id="modalDeleteDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <a href="/beam/delete/{{beamInformation.beam_id}}" type="button" class="btn btn-danger">Yes</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <table class="table" id="tableSites">
+               <thead class="thead-dark">
+                 <tr>
+                 <th scope="col">Service ID</th>
+                 <th scope="col">Service Profile</th>
+               </tr>
+            </thead>
+            <tbody>
+              {{#each serviceInformation}}
+              <tr>
+                <td>
+                  <a href="/service/{{service_id}}">
+                    {{beam}}
+                  </a>
+                  </td>
+                <td>{{service_profile}}</td>
+              </tr>
+              {{/each}}
+            </tbody>   
+            </table>
+            <a href="/service/insert" class="btn btn-sm btn-success">Add Service</a>                 
         </main>
       </div>
     </div>

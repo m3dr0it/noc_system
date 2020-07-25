@@ -24,11 +24,38 @@ router.post('/insert',function(req,res,next){
     })
 })
 
+router.post('/edit/:beamId',function(req,res,next){
+    var queryEditBeam = "UPDATE `beams` SET `beam`='"+req.body.beamNumber+"',"+
+    "`covered_area`='"+req.body.coveredArea+"' WHERE `beam_id`='"+req.params.beamId+"'";
+    connection.query(queryEditBeam,function(err,result){
+        if(err) throw err;
+        console.log(result);
+        res.redirect('/beam')
+    })
+})
+
 router.get('/:beamId',function(req,res,next){
     connection.query("select * from beams where `beam_id`='"+req.params.beamId+"'",function(err,beam){
         console.log(beam);
         res.render('beam',{beamInformation:beam[0]})
     })
 })
+
+router.get('/delete/:beamId',function(req,res,next){
+    console.log(req.params.beamId);
+    var queryDeteleBeam = "delete from `beams` where `beam_id`='"+req.params.beamId+"'";
+    connection.query(queryDeteleBeam,function(err,result){
+        if(err){
+            console.log(err);
+            res.send(err)
+        }else{
+            console.log(result);
+            console.log(req.params.beamId+" has been deleted");
+            res.redirect('/beam')
+        }
+    })
+})
+
+
 
 module.exports = router;

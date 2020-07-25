@@ -9,6 +9,10 @@ var usersRouter = require('./routes/users');
 var siteRouter = require('./routes/site');
 var beamRouter = require('./routes/beam');
 var partnerRouter = require('./routes/partner');
+var serviceRouter = require('./routes/service');
+var modemRouter = require('./routes/modem')
+var svnoRouter = require('./routes/svno')
+var statusRouter = require('./routes/status')
 var app = express();
 
 // view engine setup
@@ -26,6 +30,10 @@ app.use('/users', usersRouter);
 app.use('/site',siteRouter);
 app.use('/beam',beamRouter);
 app.use('/partner',partnerRouter);
+app.use('/service',serviceRouter)
+app.use('/status',statusRouter)
+app.use('/modem',modemRouter)
+app.use('./svno',svnoRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
