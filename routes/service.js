@@ -7,3 +7,5 @@ const { route } = require('./site');
 router.get('/',function(req,res,next){
     res.send("under developing")
 })
+
+module.exports = router;

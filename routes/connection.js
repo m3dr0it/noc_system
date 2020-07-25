@@ -8,10 +8,10 @@ var mysql = require('mysql');
 //   database:'noc_system'
 // });
 var connectionDb = mysql.createConnection({
-  host:'localhost',
+  host:'db_noc',
   port:'3306',
-  user:'root',
-  password:'',
+  user:'noc_alpha',
+  password:'hellonoc',
   database:'noc_system'
 });
 connectionDb.connect(function(err){
