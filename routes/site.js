@@ -22,11 +22,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/all',function(req,res,next){
-    connection.query("select * from",function(err,rows){
-        connection.query("select * from sites",function(err,rows){
+        connection.query("select * from sites join status using(`status_id`) join services using(`service_id`) join modem using(`modem_id`)",function(err,rows){
             res.render('allsite',{allSiteInformation:rows})
         })
-    })
 })
 
 router.get('/delete/:linkId',function(req,res,next){
@@ -142,6 +140,8 @@ router.get('/:linkID',function(req,res,next){
   router.post('/input',function(req,res,next){
      
   })
+
+  router.get('/export',)
 
 
 module.exports = router;

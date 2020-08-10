@@ -33,7 +33,7 @@ app.use('/partner',partnerRouter);
 app.use('/service',serviceRouter)
 app.use('/status',statusRouter)
 app.use('/modem',modemRouter)
-app.use('./svno',svnoRouter)
+app.use('/svno',svnoRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
