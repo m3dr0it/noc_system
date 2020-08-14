@@ -31,7 +31,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="/site/all">
-                  <span data-feather="map-pin">(current)</span>
+                  <span data-feather="map-pin"></span>
                   Sites
                 </a>
               </li>
@@ -60,23 +60,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/svno">
-                  <span data-feather="monitor"></span>
-                  SVNO
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="/status">
                   <span data-feather="power"></span>
                   Status
                 </a>
-              </li>     
-              <li class="nav-item">
-                <a class="nav-link" href="/project">
-                  <span data-feather="briefcase"></span>
-                  Project
-                </a>
-              </li>                           
+              </li>                                
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -91,7 +79,7 @@
               <h2>Insert New Site</h2>      
             </div>
              <div>
-                <form action="/site/insert" method="POST">
+                <form action="/site/add" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" id="siteName" placeholder="Site Name" name="siteName">
                 </div>
@@ -126,7 +114,7 @@
                     <label for="modem">Modem</label>
                     <select class="form-control form-control" id="modem" name="modem">
                         {{#each formInformation.modem}}
-                        <option value={{modem_id}}>{{modem}}</option>
+                        <option value={{modem_id}}>{{modem_type}}</option>
                         {{/each}}
                     </select>
                 </div>
@@ -155,13 +143,6 @@
                     <input type="date" class="form-control" id="startOnline" placeholder="Enter Start Online" name="startOnline">
                 </div>
                 <div class="form-group">
-                    <label for="projectId">Project ID</label>
-                    <select class="form-control form-control" id="projectId" name="projectId">
-                        {{#each formInformation.project}}
-                        <option value={{project_id}}>{{project_id}}</option>
-                        {{/each}}
-                    </select>
-                </div>
                 <div class="form-group">
                     <label for="vendorr">Partner</label>
                     <select class="form-control form-control" id="Partner" name="partner">
@@ -169,7 +150,16 @@
                         <option value={{partner_id}}>{{partner}}</option>
                         {{/each}}
                     </select>
-                </div>                                                
+                </div>  
+
+                    <label for="projectId">Project ID</label>
+                    <select class="form-control form-control" id="projectId" name="projectId">
+                        {{#each formInformation.project}}
+                        <option value={{project_id}}>{{project_id}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                                              
                 <div class="form-group">
                     <input type="text" class="form-control" id="terminalName" placeholder="Enter Terminal Name" name="terminalName">
                 </div>                

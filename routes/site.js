@@ -38,14 +38,14 @@ router.get('/delete/:linkId',function(req,res,next){
   })
 })
 
-router.get('/insert',function(req,res,next){
+router.get('/add',function(req,res,next){
 
   connection.query("select * from beams",function(err,beams){
     connection.query("select * from services",function(err,services){
       connection.query("select * from svno",function(err,svno){
         connection.query("select * from modem",function(err,modem){
           connection.query("select * from projects",function(err,project){
-            connection.query("select * from partnesr",function(err,partner){
+            connection.query("select * from partners",function(err,partner){
               connection.query("select * from status",function(err,status){
                 
                 formInformation.beams = beams
@@ -67,7 +67,7 @@ router.get('/insert',function(req,res,next){
   })
 })
 
-router.post('/insert',function(req,res,next){  
+router.post('/add',function(req,res,next){  
   var insertQuery = "INSERT INTO `sites`(`link_id`, `site_name`, `beam_id`, `service_id`, `svno_id`, `modem_id`, `serial_number`, `mac_air`, "
   +"`longitude`, `latitude`, `status_id`, `start_online`, `project_id`, `terminal_name`, `link_portal`) "
   +"VALUES ('"+req.body.linkId+"','"+req.body.siteName+"','"+req.body.beam+"','"+req.body.service+"','"+req.body.svno+"',"

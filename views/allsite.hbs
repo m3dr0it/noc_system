@@ -31,7 +31,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="/site/all">
-                  <span data-feather="map-pin">(current)</span>
+                  <span data-feather="map-pin"></span>
                   Sites
                 </a>
               </li>
@@ -60,23 +60,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/svno">
-                  <span data-feather="monitor"></span>
-                  SVNO
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="/status">
                   <span data-feather="power"></span>
                   Status
                 </a>
-              </li>     
-              <li class="nav-item">
-                <a class="nav-link" href="/project">
-                  <span data-feather="briefcase"></span>
-                  Project
-                </a>
-              </li>                            
+              </li>                                 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
               <span>Saved reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
@@ -91,12 +79,14 @@
             <h1 class="h2">Site Information</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary">Share</button>
+                <a class="btn btn-sm btn-success" href="/site/add">Add New Site</a>
+              </div>
+              <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Export</button>
               </div>
               <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
-                <span data-feather="calendar"></span>
-                This week
+                <span data-feather="point"></span>
+                Filter By
               </button>
             </div>
           </div>
@@ -140,7 +130,6 @@
                           {{/each}}
                       </tbody>
                 </table>
-              <a href="/site/insert" class="btn btn-sm btn-success">Add Site</a>
          </div>
         </main>
       </div>
