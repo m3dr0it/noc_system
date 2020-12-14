@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var connection = require('./connection'); 
 var beautify = require('json-beautify');
+var fs = require('fs')
 
 var formInformation = {
   beams : '',
@@ -22,9 +23,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/all',function(req,res,next){
-        connection.query("select * from sites join status using(`status_id`) join services using(`service_id`) join modem using(`modem_id`)",function(err,rows){
+  var querySelectAllSite = "select * from sites join status using(`status_id`) join services using(`service_id`) join modem using(`modem_id`)";
+        connection.query(querySelectAllSite,function(err,rows){
             res.render('allsite',{allSiteInformation:rows})
-        })
+    })
 })
 
 router.get('/delete/:linkId',function(req,res,next){
@@ -39,7 +41,6 @@ router.get('/delete/:linkId',function(req,res,next){
 })
 
 router.get('/add',function(req,res,next){
-
   connection.query("select * from beams",function(err,beams){
     connection.query("select * from services",function(err,services){
       connection.query("select * from svno",function(err,svno){
@@ -102,6 +103,14 @@ router.post("/edit/:linkId",function(req,res,next){
   })
 })
 
+router.get('/export',function(req,res,next){
+  connection.query("select * from sites join status using(`status_id`) join services using(`service_id`) join modem using(`modem_id`)",function(err,rows){
+    console.log(beautify(rows,null,2,100));
+    fs.writeFile("data.json",beautify(rows,null,2,100))
+    res.json(beautify(rows,null,2,100))
+  })
+})
+
 router.get('/:linkID',function(req,res,next){
     var linkID = req.params.linkID;
     console.log(linkID);
@@ -141,7 +150,15 @@ router.get('/:linkID',function(req,res,next){
      
   })
 
-  router.get('/export',)
-
+  router.get('/all/filter/beam/:beamId',function(req,res,next){
+    var querySelectSiteOrderByBeam = "select * from sites join status using(`status_id`) join services using(`service_id`) join modem using(`modem_id`) where `beam_id`='"+req.params.beamId+"'"
+    connection.query(querySelectSiteOrderByBeam,function(err,allsiteFilterbyBeam){
+      if(err){
+        res.send(err)
+      }else{
+        res.render("allsite",{allSiteInformation : allsiteFilterbyBeam})
+      }
+    })
+  })
 
 module.exports = router;

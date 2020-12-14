@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Sites</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap-4.0.0/bootstrap-4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/dashboard.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/site/all">
+                  <span data-feather="map-pin"></span>
+                  Sites
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/beam">
+                  <span data-feather="target"></span>
+                  Beams
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/partner">
+                  <span data-feather="users"></span>
+                  Partners
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/service">
+                  <span data-feather="package"></span>
+                  Services
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/modem">
+                  <span data-feather="hard-drive"></span>
+                  Modem Type
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/status">
+                  <span data-feather="power"></span>
+                  Status
+                </a>
+              </li>                                 
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>                                          
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+          <form method="POST" action="/dailyreport">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Enter Your Name</label>
+              <input type="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
+              <small id="emailHelp" class="form-text text-muted">Full Name</small>
+            </div>
+            </form>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/jquery-slim.min.js"></script>') </script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/assets/js/vendor/popper.min.js"></script>
+    <script src="/bootstrap-4.0.0/bootstrap-4.0.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    
+  </body>
+</html>

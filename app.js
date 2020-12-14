@@ -13,6 +13,7 @@ var serviceRouter = require('./routes/service');
 var modemRouter = require('./routes/modem')
 var svnoRouter = require('./routes/svno')
 var statusRouter = require('./routes/status')
+var dailyReport = require('./routes/dailyReport')
 var app = express();
 
 // view engine setup
@@ -35,6 +36,7 @@ app.use('/status',statusRouter)
 app.use('/modem',modemRouter)
 app.use('/svno',svnoRouter)
 app.use('/status',statusRouter)
+app.use('/dailyreport',dailyReport)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
